@@ -1,0 +1,37 @@
+<apex:page controller="Picklist2radiobuttoncontroller" sidebar="false" standardStylesheets="false">
+<apex:form >
+    <apex:pageBlock id="page_block">
+        <apex:actionstatus id="progress" startText=" (please wait...)"/>
+        <b>Select Object</b><apex:selectList value="{!selectedObject}" multiselect="false" size="1">
+        <apex:selectOptions value="{!ObjectNames}"/>
+        <apex:actionSupport event="onchange" action="{!AllPicklistfileds}" reRender="page_block" status="progress"/>        
+        </apex:selectList>
+       
+       
+    <b>Select Picklist Field</b><apex:selectList value="{!selectedfield}" multiselect="false" size="1">
+    <apex:selectOptions value="{!picklistfileds}"/>
+    <apex:actionSupport event="onchange" action="{!describepicklistfield}" reRender="page_block" status="progress"/>        
+    </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;
+    <b> Data Type</b>&nbsp;&nbsp;{!datatype}<br/><br/>
+    <apex:outputPanel rendered="{!picklistvalues.size>0}">
+        <b>Selected picklist field values are displayed as radio button</b>
+        
+    <apex:selectRadio value="{!singleselectvalue}">    
+        <apex:selectOptions value="{!picklistvalues}"/>
+    </apex:selectRadio>
+    
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!multipicklistvalues.size>0}">
+    <b>Selected Multi-Picklist field values are displayed as  Checkbox</b>
+    <apex:selectCheckboxes value="{!multiselectvalues}">    
+        <apex:selectOptions value="{!multipicklistvalues}"/>
+    </apex:selectCheckboxes>
+   </apex:outputPanel>
+    
+    </apex:pageBlock>
+    
+   
+
+</apex:form>
+  
+</apex:page>

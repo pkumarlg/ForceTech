@@ -1,0 +1,34 @@
+<apex:page controller="DescribeObjectController" standardStylesheets="false" sidebar="false">
+<apex:form id="theform">
+
+
+<apex:pageBlock >
+
+    <apex:actionstatus id="progress" startText=" (please wait...)"/>
+    <b>Select Object</b><apex:selectList value="{!selectObject}" multiselect="false" size="1">
+    <apex:selectOptions value="{!ObjectNames}"/>
+    <apex:actionSupport event="onchange" action="{!FieldDescribe}" reRender="page_block_id,sec1,theform" status="progress"/>
+    </apex:selectList>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <b>Filter By DataType</b><apex:selectList value="{!selectdataType}" multiselect="false" size="1">
+    <apex:selectOptions value="{!Datatypes}"/>
+     <apex:actionSupport event="onchange" action="{!FieldDescribe}" reRender="sec1,theform,page_block_id" status="progress"/>
+    </apex:selectList>
+
+</apex:pageBlock>
+
+<!--To Display All fields without and without Filtering-->
+<apex:pageBlock id="page_block_id">
+
+        <apex:pageblocktable value="{!allfieldnames}" var="Fname" width="100%">
+        <apex:column value="{!Fname.FName}" headerValue="Field Name"/>
+        <apex:column value="{!Fname.Label}" headerValue="Field Label"/>
+        <apex:column value="{!Fname.Ftype}" headerValue="DataType"/>
+        <apex:column value="{!Fname.Length}" headerValue="Length"/>
+        <apex:column value="{!Fname.Precision}" headerValue="Precision"/>
+        <apex:column value="{!Fname.Scale}" headerValue="Scale"/>
+        </apex:pageblocktable>
+
+</apex:pageBlock>
+  </apex:form>
+</apex:page>
