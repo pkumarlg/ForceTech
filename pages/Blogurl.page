@@ -1,0 +1,12 @@
+<apex:page sidebar="false">
+<apex:form >
+<center>
+  <apex:commandLink onclick="openurl();" target="_self" value="Navigate to my salesforce blog"/>
+  <script>
+      function openurl(){
+          window.open("http://sfdccontributor.blogspot.in/");    
+      }
+  </script>
+  </center>
+  </apex:form>
+</apex:page>

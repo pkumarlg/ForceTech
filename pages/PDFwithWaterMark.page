@@ -1,0 +1,11 @@
+<apex:page showHeader="false" sidebar="false" renderAs="pdf"> 
+<img src="{!URLFOR($Resource.WaterMark)}" width="100%" height="100%" 
+   style="position: fixed;background-repeat:repeat;left: 0cm; top:0cm; z-index:-999; opacity=10;"/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+   
+<p><b>This helps you how to create Water Mark in VF page rendrerAs PDF.</b><br/><br/>
+1. Create PNG image with same size of PDF.<br/>
+2. Upload to static resource.<br/>
+3. Make use of the code to display the image as water mark in your Vf page. 
+</p>
+   
+</apex:page>
